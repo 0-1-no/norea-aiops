@@ -12,7 +12,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
     "@octokit/rest": "^20.1.2",
-    "@vercel/node": "^3.0.0"
+    "@vercel/node": "^3.0.0",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",

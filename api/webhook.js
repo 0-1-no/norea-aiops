@@ -2,16 +2,16 @@ const { createHmac } = require('crypto');
 const { analyzeWithClaude } = require('../lib/claude');
 const { postComment, getPRDiff } = require('../lib/github');
 
-module.exports = async function handler(req: any, res: any) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
     // Verify GitHub webhook signature
-    const signature = req.headers['x-hub-signature-256'] as string;
+    const signature = req.headers['x-hub-signature-256'];
     const payload = JSON.stringify(req.body);
-    const expectedSignature = 'sha256=' + createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET!)
+    const expectedSignature = 'sha256=' + createHmac('sha256', process.env.GITHUB_WEBHOOK_SECRET)
       .update(payload)
       .digest('hex');
 
