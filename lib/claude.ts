@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+const Anthropic = require('@anthropic-ai/sdk');
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -15,7 +15,7 @@ interface AnalysisResult {
   comment: string;
 }
 
-export async function analyzeWithClaude(diff: string): Promise<AnalysisResult> {
+exports.analyzeWithClaude = async function analyzeWithClaude(diff: string): Promise<AnalysisResult> {
   const prompt = `
 Analyser denne Git diff for Norea AI (norsk AI-plattform):
 
@@ -27,7 +27,7 @@ For hver funn, generer:
 - Filnavn og linje
 - Type problem
 - Kort beskrivelse
-- Prompt for å fikse
+- Prompt for ï¿½ fikse
 
 Returner som JSON:
 {
@@ -93,10 +93,10 @@ function formatComment(issues: AnalysisResult['issues']): string {
   let comment = '## > Norea AIOps - Kodeanalyse\n\n';
   
   issues.forEach(issue => {
-    const icon = issue.type === 'english_text' ? '<ó<ô' : ' ';
+    const icon = issue.type === 'english_text' ? '<ï¿½<ï¿½' : 'ï¿½';
     comment += `**${issue.file}:${issue.line}**\n`;
     comment += `${icon} ${issue.description}\n`;
-    comment += `=Ý **Prompt:** ${issue.prompt}\n\n`;
+    comment += `=ï¿½ **Prompt:** ${issue.prompt}\n\n`;
   });
 
   comment += '---\n*Generert av Norea AIOps*';

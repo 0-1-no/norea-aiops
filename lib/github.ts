@@ -1,10 +1,10 @@
-import { Octokit } from '@octokit/rest';
+const { Octokit } = require('@octokit/rest');
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
-export async function getPRDiff(owner: string, repo: string, pullNumber: number): Promise<string> {
+exports.getPRDiff = async function getPRDiff(owner: string, repo: string, pullNumber: number): Promise<string> {
   try {
     const { data } = await octokit.pulls.get({
       owner,
@@ -22,7 +22,7 @@ export async function getPRDiff(owner: string, repo: string, pullNumber: number)
   }
 }
 
-export async function postComment(
+exports.postComment = async function postComment(
   owner: string, 
   repo: string, 
   pullNumber: number, 

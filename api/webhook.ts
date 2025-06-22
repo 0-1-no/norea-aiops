@@ -1,9 +1,8 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
-import { createHmac } from 'crypto';
-import { analyzeWithClaude } from '../lib/claude';
-import { postComment, getPRDiff } from '../lib/github';
+const { createHmac } = require('crypto');
+const { analyzeWithClaude } = require('../lib/claude');
+const { postComment, getPRDiff } = require('../lib/github');
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
