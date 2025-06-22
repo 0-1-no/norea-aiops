@@ -1,7 +1,7 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import { createHmac } from 'crypto';
-import { analyzeWithClaude } from '../lib/claude';
-import { postComment, getPRDiff } from '../lib/github';
+import { analyzeWithClaude } from '../lib/claude.js';
+import { postComment, getPRDiff } from '../lib/github.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
