@@ -9,10 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
-    "@octokit/rest": "^22.0.0",
+    "@octokit/rest": "^20.1.2",
     "crypto": "^1.0.1"
   },
   "devDependencies": {
